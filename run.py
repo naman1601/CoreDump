@@ -21,4 +21,7 @@ async def on_message(message):
     if(message.content.endswith('karla')):
     	await message.channel.send(message.content[:-1] + 'e')
 
-client.run("token")
+tokenfile = open('token.txt', 'r')
+tokenstring = tokenfile.read()
+
+client.run(tokenstring)
