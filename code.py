@@ -15,4 +15,4 @@ async def on_message(message):
     if 'nadaan' in message.content and 'baalak' in message.content:
         await message.channel.send('bhosadike!')
 
-client.run("ODI0ODY0MDAxMjM3MTg4NjM4.YF1kdw.eRK_baC_U6xSPAumXmrqwSuX1K4")
+client.run("token")
