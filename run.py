@@ -116,6 +116,7 @@ async def on_message(message):
                 game_on = False
                 score = 0
                 await message.channel.send('congratulations!! ' + p1_name)
+                await message.channel.send('big brain ' + p2_name)
         
         else:
 
@@ -143,6 +144,7 @@ async def on_message(message):
                 game_on = False
                 score = 0
                 await message.channel.send('congratulations!! ' + p2_name)
+                await message.channel.send('what a dum-dum ' + p1_name)
 
 
 tokenfile = open('token.txt', 'r')
