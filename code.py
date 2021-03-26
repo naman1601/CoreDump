@@ -15,4 +15,10 @@ async def on_message(message):
     if 'nadaan' in message.content and 'baalak' in message.content:
         await message.channel.send('bhosadike!')
 
+    if message.content.endswith('nga'):
+    	await message.channel.send(message.content[:-3] + 'nge')
+
+    if(message.content.endswith('karla')):
+    	await message.channel.send(message.content[:-1] + 'e')
+
 client.run("token")
