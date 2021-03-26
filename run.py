@@ -37,6 +37,20 @@ async def on_message(message):
 
     # await message.channel.send(message.author)
 
+    if message.content == '$exit':
+
+    	if game_on == True:
+
+    		await message.channel.send(':catok:')
+    		game_on = False
+    		p1_on = False
+    		p2_on = False
+    		turn = 0
+
+    	else:
+    		await message.channel.send('are kehna kya chahte ho')
+
+
     if message.content == '$game':
 
         if game_on == True:
@@ -58,6 +72,7 @@ async def on_message(message):
                 p1_on = False
                 p2_on = True
                 await message.channel.send('player 1 is ' + p1_name)
+                await message.channel.send('player 2 send $me')
             else:
                 p2_name = str(message.author)
                 p2_name = p2_name[:-5]
@@ -88,13 +103,13 @@ async def on_message(message):
                 score -= increase
                 turn = 1
 
-            elif increase > moves_options:
+            elif increase > moves_options or increase < 1:
                 await message.channel.send('cheater :(')
                 score -= increase
                 turn = 1
 
             else:
-                await message.channel.send('score: ' + str(score))
+                await message.channel.send('score: ' + str(score) + ', target: ' + str(win_limit))
 
 
             if score == win_limit:
@@ -115,13 +130,13 @@ async def on_message(message):
                 score -= increase
                 turn = 2
 
-            elif increase > moves_options:
+            elif increase > moves_options or increase < 1:
                 await message.channel.send('cheater :(')
                 score -= increase
                 turn = 2
 
             else:
-                await message.channel.send('score: ' + str(score))
+                await message.channel.send('score: ' + str(score) + ', target: ' + str(win_limit))
 
 
             if score == win_limit:
