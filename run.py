@@ -41,29 +41,29 @@ async def on_message(message):
 
     	if game_on == True:
 
-    		await message.channel.send(':catok:')
+    		await message.channel.send('```yml\n:catok:\n```')
     		game_on = False
     		p1_on = False
     		p2_on = False
     		turn = 0
 
     	else:
-    		await message.channel.send('are kehna kya chahte ho')
+    		await message.channel.send('```yml\nare kehna kya chahte ho\n```')
 
 
     if message.content == '$game':
 
         if game_on == True:
-            await message.channel.send('a game is already on, calm down!')
+            await message.channel.send('```yml\na game is already on, calm down!\n```')
 
         else:
-            await message.channel.send('player 1 send $me')
+            await message.channel.send('```yml\nplayer 1 send $me\n```')
             p1_on = True
 
 
     if(message.content == '$me'):
         if game_on == True:
-            await message.channel.send('a game is already on, calm down!')
+            await message.channel.send('```yml\na game is already on, calm down!\n```')
 
         else:
             if p1_on == True:
@@ -71,20 +71,20 @@ async def on_message(message):
                 p1_name = p1_name[:-5]
                 p1_on = False
                 p2_on = True
-                await message.channel.send('player 1 is ' + p1_name)
-                await message.channel.send('player 2 send $me')
+                await message.channel.send('```yml\nplayer 1 is ' + p1_name + '\n```')
+                await message.channel.send('```yml\nplayer 2 send $me \n```')
             else:
                 p2_name = str(message.author)
                 p2_name = p2_name[:-5]
                 p2_on = False
                 game_on = True
                 turn = 1
-                await message.channel.send('player 2 is ' + p2_name)
+                await message.channel.send('```yml\nplayer 2 is ' + p2_name + '\n```')
 
                 win_limit = random.randint(10, 35)
                 moves_options = random.randint(2, int(win_limit / 2))
-                await message.channel.send('turn of ' + p1_name + '; send your choice in format +x where x is from 1 to ' + str(moves_options))
-                await message.channel.send('your target is to hit ' + str(win_limit ))
+                await message.channel.send('```yml\nturn of ' + p1_name + '; send your choice in format +x where x is from 1 to ' + str(moves_options)+'\n```')
+                await message.channel.send('```yml\nyour target is to hit ' + str(win_limit ) + '\n```')
 
 
     if message.content.startswith('+') and game_on == True:
@@ -99,23 +99,23 @@ async def on_message(message):
             turn = 2
 
             if cur_player != p1_name:
-                await message.channel.send('teri turn nahi hai lodu')
+                await message.channel.send('```yml\nteri turn nahi hai lodu\n```')
                 score -= increase
                 turn = 1
 
             elif increase > moves_options or increase < 1:
-                await message.channel.send('cheater :(')
+                await message.channel.send('```yml\ncheater :(\n```')
                 score -= increase
                 turn = 1
 
             else:
-                await message.channel.send('score: ' + str(score) + ', target: ' + str(win_limit))
+                await message.channel.send('```yml\nscore: ' + str(score) + ', target: ' + str(win_limit) + '\n```')
 
 
             if score == win_limit:
                 game_on = False
                 score = 0
-                await message.channel.send('congratulations!! ' + p1_name)
+                await message.channel.send('```yml\ncongratulations!! ' + p1_name + '\n```')
         
         else:
 
@@ -126,23 +126,23 @@ async def on_message(message):
             turn = 1
 
             if cur_player != p2_name:
-                await message.channel.send('teri turn nahi hai lodu')
+                await message.channel.send('```yml\nteri turn nahi hai lodu\n```')
                 score -= increase
                 turn = 2
 
             elif increase > moves_options or increase < 1:
-                await message.channel.send('cheater :(')
+                await message.channel.send('```yml\ncheater :(\n```')
                 score -= increase
                 turn = 2
 
             else:
-                await message.channel.send('score: ' + str(score) + ', target: ' + str(win_limit))
+                await message.channel.send('```yml\nscore: ' + str(score) + ', target: ' + str(win_limit) + '\n```')
 
 
             if score == win_limit:
                 game_on = False
                 score = 0
-                await message.channel.send('congratulations!! ' + p2_name)
+                await message.channel.send('```yml\ncongratulations!! ' + p2_name + '\n```')
 
 
 tokenfile = open('token.txt', 'r')
